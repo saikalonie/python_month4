@@ -1,9 +1,12 @@
-<h1>Детальный просмотр</h1>
-
-<h1>Title:{{ post.title }}</h1>>
-{% if post.image %}
-<img src="{{ post.image.url }}" alt="image" style="...">
-{% endif %}
-<p>Описание: {{ post.content }}</p>
-<h6>Рейтинг: {{ post.rate }}</h6>
-<p>Дата создания: {{ post.created_at }}</p>
+{% extends 'main.html' %}
+{% block content %}
+    <div class="card" style="width: 18rem; margin: 2%;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{post.title}}</h5>
+    <p class="card-text">{{ post.description }}</p>
+      <p class="card-text">{{ post.rate }}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+{% endblock %}
