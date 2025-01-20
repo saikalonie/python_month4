@@ -5,6 +5,8 @@ from django.db import models
 "one object - Post.objects.get(id=1)----> SELECT * FROM posts WHERE id=1"
 """SELECT * FROM posts WHERE title ILIKE '%a%'"""
 "few items by condition- Post.objects.filter(title='title')----> SELECT * FROM posts WHERE id=1"
+"""INSERT into posts(title, description) values('title', 'description') """
+"create object - Post.objects.create()"
 
 class Category(models.Model):
     name = models.CharField(max_length=70)
@@ -23,7 +25,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=256, null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
-    tags = models.ManyToManyField(Tag, blank=True)
+    tags = models.ManyToManyField(Tag, blank=True )
     rate = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
