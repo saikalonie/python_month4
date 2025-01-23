@@ -1,5 +1,9 @@
 {% extends 'main.html' %}
 {% block content %}
+    <form action="" method="get">
+    {{ search_form.as_p }}
+        <button type="submit" class ="btn btn-primary">SEARCH</button>
+    </form>
 {% for post in posts %}
     <div class="card" style="width: 18rem; margin: 2%;">
     {% if post.image%}
@@ -15,4 +19,20 @@
   </div>
 </div>
 {% endfor %}
+    <div style="display: flex; justify-content: center; margin-bottom: 20px; margin-top: 20px"></div>
+{% for i in max_pages %}
+    {% with request.GET.urlencode as query_params %}
+        {% with query_params|slice:":-6" as clean_params %}
+            <a href="{{ request.path }}?{{ clean_params }}&page={{ i }}" class="btn btn-primary">{{ i }}</a>
+        {% endwith %}
+    {% endwith %}
+{% endfor %}
+
+{#    {% for i in max_pages %}#}
+{#        {% if request.GET %}#}
+{#        <a href="{{ request.get_full_path }}&page={{ i }}" class="btn btn-primary">{{ i }}</a>#}
+{#        {% else %}#}
+{#        <a href="/posts/?page={{ i }}" class="btn btn-primary">{{ i }}</a>#}
+{#        {% endif %}#}
+{#    {% endfor %}#}
 {% endblock %}

@@ -6,6 +6,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ["title", "category", "rate", "created_at"]
     list_filter = ["category", "tags"]
     search_fields = ["title", "description", "tag_name"]
+    list_editable = ["rate"]
 
 # admin.site.register(Post)
 # admin.site.register(Category)
