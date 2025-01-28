@@ -3,6 +3,8 @@ from django import forms
 class  RegisterForm(forms.Form):
     username = forms.CharField(max_length=50)
     email = forms.EmailField(max_length=50)
+    image = forms.ImageField()
+    age = forms.IntegerField()
     password = forms.CharField(widget=forms.PasswordInput)
     password_confirm = forms.CharField(widget=forms.PasswordInput)
 

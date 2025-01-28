@@ -10,7 +10,9 @@
     <h5 class="card-title">{{post.title}}</h5>
     <p class="card-text">{{ post.description }}</p>
       <p class="card-text">{{ post.rate }}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+      {% if post.author == request.user %}
+    <a href="/posts/update/{{ post.id }}" class="btn btn-primary">Update post</a>
+      {% endif %}
   </div>
 </div>
 {% endblock %}
